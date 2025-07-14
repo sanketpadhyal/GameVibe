@@ -1,4 +1,4 @@
-const apiKey = '09f36c0c18d24a3e8a29ce39b7ced4af';
+const apiKey = 'Enter Your Api Here';
 
 const searchResults = document.getElementById('searchResults');
 const overlay = document.getElementById('overlay');
