@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GameVibe 🕹️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: #0a0a0a;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .waves {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .waves svg {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: auto;
+    }
+
+    .glass-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 2rem 3rem;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      margin-bottom: 2rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1s ease forwards 0.3s;
+    }
+
+    .logo-title {
+      font-size: 4rem;
+      font-weight: bold;
+    }
+
+    .logo-title .blue-glow {
+      color: #00f6ff;
+      text-shadow: 0 0 10px #00f6ff, 0 0 20px #00f6ff;
+    }
+
+    .logo-title .red-text {
+      color: red;
+    }
+
+    .get-started-btn {
+      margin-top: 1rem;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(135deg, #00ff88, #00ff44);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 20px rgba(0, 255, 128, 0.6);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1s ease forwards 0.7s;
+    }
+
+    .get-started-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 255, 128, 0.9);
+    }
+
+    .footer-credits {
+      position: absolute;
+      bottom: 1.5rem;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #aaa;
+      line-height: 1.4;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s ease forwards 1.2s;
+    }
+
+    .footer-credits em {
+      font-style: italic;
+      color: #fff;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .logo-title {
+        font-size: 2.5rem;
+      }
+
+      .get-started-btn {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+      }
+
+      .glass-box {
+        padding: 1.5rem 2rem;
+      }
+    }
+
+    /* Loading Overlay */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    #loader.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .spinner {
+      border: 6px solid #444;
+      border-top: 6px solid #00ff99;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="favicon.ico">
+</head>
+<body>
+
+  <!-- Glass Drop Title -->
+  <div class="glass-box">
+    <h1 class="logo-title">
+      <span class="blue-glow">Game</span><span class="red-text">Vibe</span> 🕹️
+    </h1>
+  </div>
+
+  <!-- GET STARTED Button -->
+  <button class="get-started-btn" onclick="startLoading()">
+    GET STARTED 🚀
+  </button>
+
+  <!-- Footer Credits -->
+  <div class="footer-credits">
+    👻 <em>Built with ❤ by @sanketpadhyal 😋</em><br/>
+    🤗 <em>GameVibe • Working Version • More updates soon! 😋</em>
+  </div>
+
+  <!-- Wave Animation -->
+  <div class="waves">
+    <svg viewBox="0 0 1440 320">
+      <path fill="#111" fill-opacity="1" d="M0,160L30,160C60,160,120,160,180,149.3C240,139,300,117,360,128C420,139,480,181,540,202.7C600,224,660,224,720,213.3C780,203,840,181,900,186.7C960,192,1020,224,1080,234.7C1140,245,1200,235,1260,229.3C1320,224,1380,224,1410,224L1440,224L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
+    </svg>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+
+  <script>
+    function startLoading() {
+      const loader = document.getElementById("loader");
+      loader.classList.add("active");
+
+      // Wait for 2 seconds then redirect
+      setTimeout(() => {
+        window.location.href = "app.html";
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>
