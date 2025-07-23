@@ -5,7 +5,7 @@ Discover, explore, and relive the greatest games of all time.
 A stylish and animated gaming discovery site powered by the RAWG API, built with 💙 by **Sanket (@sanketpadhyal)**.
 
 ## 🚀 Live Demo
-[https://precious-gecko-50d1e5.netlify.app](https://precious-gecko-50d1e5.netlify.app)
+[https://melodic-kangaroo-c3f16d.netlify.app](https://melodic-kangaroo-c3f16d.netlify.app)
 
 ## 🛠️ Features
 - Glowing landing page with smooth transitions  
